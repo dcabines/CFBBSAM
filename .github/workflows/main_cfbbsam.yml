@@ -25,7 +25,7 @@ jobs:
         working-directory: Views/dashboard/
         run: |
           npm ci
-          npm build
+          npm run build
 
       - name: Copy Output
         run: mv Views/dashboard/build/* wwwroot/
