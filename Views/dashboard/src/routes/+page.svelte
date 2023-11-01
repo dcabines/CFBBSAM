@@ -1,18 +1,8 @@
 <script>
-	import { onMount } from 'svelte';
 	import Counter from './Counter.svelte';
+	import APChart from './APChart.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
-	import * as d3 from "d3";
-	let data;
-
-	onMount(
-		async () => {
-			data = await d3.csv('/data/AP.csv');
-		}
-	)
-
-	$: console.log(data)
 </script>
 
 <svelte:head>
@@ -33,6 +23,7 @@
 	</h1>
 
 	<Counter />
+	<APChart />
 </section>
 
 <style>

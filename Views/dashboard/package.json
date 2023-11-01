@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
 		"@types/cookie": "^0.5.1",
+		"@types/d3": "^7.4.2",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"eslint": "^8.28.0",
@@ -31,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@observablehq/plot": "^0.6.11",
 		"@sveltejs/adapter-static": "^2.0.3",
 		"d3": "^7.8.5"
 	}
