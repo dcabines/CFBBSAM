@@ -22,11 +22,13 @@ jobs:
           node-version: 18
 
       - name: Build Front End
-        working-directory: ./temp
+        working-directory: Views/dashboard/
         run: |
           npm ci
           npm build
-          mv Views/dashboard/build/* wwwroot/
+
+      - name: Copy Output
+        run: mv Views/dashboard/build/* wwwroot/
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
