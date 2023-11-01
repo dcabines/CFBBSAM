@@ -2,11 +2,16 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+
+	const fetchImage = (async () => {
+		const response = await fetch('https://dog.ceo/api/breeds/image/random')
+    return await response.json()
+	})()
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>CFBBSAM</title>
+	<meta name="description" content="CFBBSAM" />
 </svelte:head>
 
 <section>
@@ -18,12 +23,16 @@
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		cfbbsam
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	{#await fetchImage}
+	<p>...waiting</p>
+{:then data}
+	<img src={data.message} alt="Dog image" />
+{:catch error}
+	<p>An error occurred!</p>
+{/await}
 
 	<Counter />
 </section>
