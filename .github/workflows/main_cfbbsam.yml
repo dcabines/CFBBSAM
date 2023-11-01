@@ -16,13 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build Front End
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm build
-      - run: mv Views/dashboard/build/* wwwroot/
+
+      - name: Build Front End
+        working-directory: ./temp
+        run: |
+          npm ci
+          npm build
+          mv Views/dashboard/build/* wwwroot/
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
