@@ -1,12 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import * as d3 from "d3";
+	let data;
 
-	const fetchImage = (async () => {
-		const response = await fetch('https://dog.ceo/api/breeds/image/random')
-    return await response.json()
-	})()
+	onMount(
+		async () => {
+			data = await d3.csv('/data/AP.csv');
+		}
+	)
+
+	$: console.log(data)
 </script>
 
 <svelte:head>
@@ -25,14 +31,6 @@
 
 		cfbbsam
 	</h1>
-
-	{#await fetchImage}
-	<p>...waiting</p>
-{:then data}
-	<img src={data.message} alt="Dog image" />
-{:catch error}
-	<p>An error occurred!</p>
-{/await}
 
 	<Counter />
 </section>
